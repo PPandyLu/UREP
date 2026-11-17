@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "model_id": "mixed8_rebuilt_resnet18_s44",
+  "dataset": "mixed8_rebuilt",
+  "method": "resnet18",
+  "seed": 44,
+  "unit": "m/px",
+  "model": {
+    "backbone": "resnet18",
+    "input_channels": 3,
+    "pretrained": false,
+    "head_outputs": 1
+  },
+  "output": {
+    "activation": "sigmoid_range",
+    "min": 0.05,
+    "max": 3.2
+  },
+  "input": {
+    "shape": [
+      3,
+      256,
+      256
+    ],
+    "color": "RGB",
+    "dtype": "float32",
+    "stretch_percentiles": [
+      2.0,
+      98.0
+    ],
+    "stretch_epsilon": 1e-06,
+    "constant_channel_threshold": 1e-06,
+    "imagenet_normalization": false
+  },
+  "training": {
+    "seed": 44,
+    "epochs": 100,
+    "train_count": 80000,
+    "dev_count": 6080,
+    "test_count": 20939,
+    "steps_per_epoch": 2500,
+    "output_min": 0.05,
+    "output_max": 3.2,
+    "lr": 0.0001,
+    "min_lr": 1e-06,
+    "unit": "m/px",
+    "batch_size": 32,
+    "eval_batch_size": 64,
+    "weight_decay": 8e-05,
+    "macro": true,
+    "effective_loss": {
+      "image_loss": "SmoothL1(log(pred),log(target))",
+      "beta": 0.1
+    },
+    "effective_optimizer": {
+      "optimizer": "AdamW",
+      "lr": 0.0001,
+      "weight_decay": 8e-05,
+      "scheduler": "CosineAnnealingLR",
+      "T_max": 100,
+      "eta_min": 1e-06,
+      "epochs": 100
+    }
+  },
+  "best_epoch": 79
+}

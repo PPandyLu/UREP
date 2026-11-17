@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "model_id": "nysdop_urep_a2_s43",
+  "dataset": "nysdop",
+  "method": "urep",
+  "seed": 43,
+  "unit": "ft/px",
+  "model": {
+    "output_min": 0.5,
+    "output_max": 6.0,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "uniform",
+    "use_nll": true
+  },
+  "output": {
+    "activation": "sigmoid_range",
+    "min": 0.5,
+    "max": 6.0
+  },
+  "input": {
+    "shape": [
+      3,
+      256,
+      256
+    ],
+    "color": "RGB",
+    "dtype": "float32",
+    "stretch_percentiles": [
+      2.0,
+      98.0
+    ],
+    "stretch_epsilon": 1e-06,
+    "constant_channel_threshold": 1e-06,
+    "imagenet_normalization": false
+  },
+  "training": {
+    "patch_size": 64,
+    "patch_stride": 64,
+    "patch_count": 16,
+    "fusion": "uniform",
+    "nll_alpha": 0.05,
+    "use_nll": true,
+    "gate_trainable": false,
+    "logvar_trainable": true,
+    "seed": 43,
+    "epochs": 100,
+    "fixed": {
+      "rgb_channels": 3,
+      "image_size": 256,
+      "patch_resize": false,
+      "patch_overlap": false,
+      "encoder": "shared_resnet18_fpn",
+      "fpn_channels": 128,
+      "head_channels": 128,
+      "norm": "GroupNorm",
+      "norm_groups": 32,
+      "norm_eps": 1e-05,
+      "norm_affine": true,
+      "pretrained": false,
+      "cnn_trainable": true,
+      "padding": "reflect",
+      "head_readout": "spatial_mean_raw_then_activation",
+      "gsd_activation": "sigmoid_range",
+      "gsd_min_ft": 0.5,
+      "gsd_max_ft": 6.0,
+      "logvar_clamp": [
+        -10,
+        10
+      ],
+      "gate_temperature": 1.0,
+      "gate_mode": "decoupled",
+      "fusion_arithmetic": true,
+      "prediction_loss": "log_smooth_l1",
+      "smooth_l1_beta": 0.1,
+      "local_extra_loss": false,
+      "weight_regularizers": false,
+      "optimizer": "AdamW",
+      "lr": 0.001,
+      "min_lr": 1e-05,
+      "weight_decay": 8e-05,
+      "scheduler": "cosine",
+      "batch_images": 32,
+      "eval_batch_images": 64,
+      "drop_last": false,
+      "val_interval": 1,
+      "best_metric": "mape_percent",
+      "best_tie_break": "earliest_epoch",
+      "amp": false,
+      "matmul_tf32": false,
+      "cudnn_tf32": true,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false
+    },
+    "effective_loss": {
+      "image_loss": "SmoothL1(log(pred),log(target))",
+      "beta": 0.1,
+      "local_loss": "nll",
+      "local_coefficient": 0.05
+    },
+    "effective_optimizer": {
+      "optimizer": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 8e-05,
+      "scheduler": "CosineAnnealingLR",
+      "T_max": 100,
+      "eta_min": 1e-05,
+      "epochs": 100
+    }
+  },
+  "best_epoch": 96
+}

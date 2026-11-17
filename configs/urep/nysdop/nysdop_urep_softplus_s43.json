@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "model_id": "nysdop_urep_softplus_s43",
+  "dataset": "nysdop",
+  "method": "urep",
+  "seed": 43,
+  "unit": "ft/px",
+  "model": {
+    "output_min": 0.0,
+    "output_max": null,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "learned",
+    "use_nll": true,
+    "bounds_activation": "softplus"
+  },
+  "output": {
+    "activation": "softplus",
+    "min": 0.0,
+    "max": null
+  },
+  "input": {
+    "shape": [
+      3,
+      256,
+      256
+    ],
+    "color": "RGB",
+    "dtype": "float32",
+    "stretch_percentiles": [
+      2.0,
+      98.0
+    ],
+    "stretch_epsilon": 1e-06,
+    "constant_channel_threshold": 1e-06,
+    "imagenet_normalization": false
+  },
+  "training": {
+    "seed": 43,
+    "epochs": 100,
+    "train_count": 54000,
+    "dev_count": 9000,
+    "test_count": 18000,
+    "steps_per_epoch": 1688,
+    "batch_size": 32,
+    "eval_batch_size": 64,
+    "output_min": 0.0,
+    "output_max": null,
+    "bounds_activation": "softplus",
+    "unit": "ft/px",
+    "lr": 0.001,
+    "min_lr": 1e-05,
+    "weight_decay": 8e-05,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "learned",
+    "use_nll": true,
+    "nll_alpha": 0.05,
+    "variant": "baseline",
+    "dev_selection": "micro_mape_percent",
+    "effective_loss": {
+      "image_loss": "SmoothL1(log(pred),log(target))",
+      "beta": 0.1,
+      "local_loss": "nll",
+      "local_coefficient": 0.05
+    },
+    "effective_optimizer": {
+      "optimizer": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 8e-05,
+      "scheduler": "CosineAnnealingLR",
+      "T_max": 100,
+      "eta_min": 1e-05,
+      "epochs": 100
+    }
+  },
+  "best_epoch": 96
+}

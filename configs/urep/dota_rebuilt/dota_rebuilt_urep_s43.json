@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "model_id": "dota_rebuilt_urep_s43",
+  "dataset": "dota_rebuilt",
+  "method": "urep",
+  "seed": 43,
+  "unit": "m/px",
+  "model": {
+    "output_min": 0.01,
+    "output_max": 5.0,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "learned",
+    "use_nll": true
+  },
+  "output": {
+    "activation": "sigmoid_range",
+    "min": 0.01,
+    "max": 5.0
+  },
+  "input": {
+    "shape": [
+      3,
+      256,
+      256
+    ],
+    "color": "RGB",
+    "dtype": "float32",
+    "stretch_percentiles": [
+      2.0,
+      98.0
+    ],
+    "stretch_epsilon": 1e-06,
+    "constant_channel_threshold": 1e-06,
+    "imagenet_normalization": false
+  },
+  "training": {
+    "seed": 43,
+    "epochs": 100,
+    "train_count": 6640,
+    "dev_count": 740,
+    "test_count": 1850,
+    "steps_per_epoch": 208,
+    "batch_size": 32,
+    "eval_batch_size": 64,
+    "output_min": 0.01,
+    "output_max": 5.0,
+    "unit": "m/px",
+    "lr": 0.0001,
+    "min_lr": 1e-06,
+    "weight_decay": 8e-05,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "learned",
+    "use_nll": true,
+    "nll_alpha": 0.05,
+    "variant": "baseline",
+    "root_mode": "backbone_feature",
+    "num_classes": 9,
+    "base_gsd": 0.013333333333333334,
+    "lr_milestones": [],
+    "dev_selection": "micro_mape_percent",
+    "effective_loss": {
+      "image_loss": "SmoothL1(log(pred),log(target))",
+      "beta": 0.1,
+      "local_loss": "nll",
+      "local_coefficient": 0.05
+    },
+    "effective_optimizer": {
+      "optimizer": "AdamW",
+      "lr": 0.0001,
+      "weight_decay": 8e-05,
+      "scheduler": "CosineAnnealingLR",
+      "T_max": 100,
+      "eta_min": 1e-06,
+      "epochs": 100
+    }
+  },
+  "best_epoch": 92
+}

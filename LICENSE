@@ -1,0 +1,66 @@
+UREP Academic Non-Commercial License
+Version 1.0
+Identifier: LicenseRef-UREP-Academic-NonCommercial-1.0
+
+1. Scope
+
+This license applies to the project-authored code, processing scripts,
+configuration files and trained model weights expressly designated as covered
+by this license in the accompanying release. The licensors are the respective
+rights holders of those materials, acting only to the extent of their rights.
+Copyright and other rights not expressly granted remain reserved.
+
+Third-party software, source imagery, annotations, source metadata and other
+third-party materials are excluded and remain subject to their own terms.
+This license does not replace upstream dataset or pretrained-model terms,
+authorize access to third-party data, or grant rights that the licensors do
+not hold. Separately identified third-party notices must be retained.
+
+2. Permitted academic use
+
+Subject to these terms and any applicable third-party obligations, you may
+use, reproduce and modify the covered materials solely for non-commercial
+academic research, academic evaluation and teaching. For these purposes you
+may run, study, evaluate and fine-tune covered model weights.
+
+You may share covered materials and modifications for those same permitted
+purposes if you include this complete license, preserve applicable copyright
+and attribution notices, identify modifications and their authors, and do not
+grant recipients broader rights in the covered materials than this license
+provides. These conditions also apply to shared fine-tuned or otherwise
+modified versions of covered weights, to the extent of the licensors' rights.
+
+3. Commercial use prohibited
+
+Any commercial use is prohibited without separate written permission from
+the relevant rights holders. This includes use in or to develop commercial
+products or services, paid inference or consulting services, resale, and
+research or development primarily intended for commercial advantage or
+monetary compensation. Academic affiliation or publication of results does
+not by itself make a commercial activity a permitted academic use.
+
+This license does not authorize non-academic uses merely because they are
+unpaid. Requests for uses outside Section 2 require separate permission.
+
+4. Attribution and research reporting
+
+Retain the project name, repository reference and supplied attribution
+notices when redistributing covered materials. Academic publications using
+the materials should acknowledge the UREP project and cite the associated
+paper when bibliographic information is available. No endorsement by the
+authors, institutions or upstream providers may be implied.
+
+5. No warranty; limitation of liability
+
+The materials are provided "AS IS", without warranties of any kind, to the
+maximum extent permitted by applicable law. The licensors do not warrant
+accuracy, fitness for a particular purpose or non-infringement. To the
+maximum extent permitted by applicable law, the licensors shall not be liable
+for claims, damages or other liability arising from use of the materials.
+
+6. Compliance
+
+Permissions under this license are conditional on compliance with its terms.
+If you violate these terms, the permissions granted to you terminate. Rights
+available independently under applicable law are not restricted by this
+license. No trademark rights are granted.

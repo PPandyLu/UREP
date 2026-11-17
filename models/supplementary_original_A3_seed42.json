@@ -1,0 +1,12 @@
+{
+  "experiment": "nysdop_A3_seed42_original",
+  "method": "urep",
+  "seed": 42,
+  "selected_epoch": 2,
+  "source_checkpoint_sha256": "63a94b4a554b434e837f620a1eb895db93a8fd5f8bd4b6e25fabd2c7ccf7632a",
+  "configuration_sha256": "f1bd3d6af4195f97c8d3be3c20a34db0a7ffb3802fe05779c1d3ab769fbc2342",
+  "reported_test_micro_mape_percent": 25.590799842198365,
+  "main_ablation_model_id": "nysdop_urep_a3_s42",
+  "weights_included": false,
+  "scientific_note": "The original run exhibited boundary saturation; its best validation checkpoint is distinct from the successful repeat used in the main ablation."
+}

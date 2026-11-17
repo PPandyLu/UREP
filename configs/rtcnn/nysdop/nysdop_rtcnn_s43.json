@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "model_id": "nysdop_rtcnn_s43",
+  "dataset": "nysdop",
+  "method": "rtcnn",
+  "seed": 43,
+  "unit": "ft/px",
+  "model": {
+    "base_gsd": 0.6666666667,
+    "input_channels": 3,
+    "mantissa_hidden": 64,
+    "mantissa_max": 1.5,
+    "mantissa_min": 0.75,
+    "num_classes": 4,
+    "root_mode": "backbone_feature",
+    "vector_dim": 16
+  },
+  "output": {
+    "activation": "floating_point_tree",
+    "min": null,
+    "max": null,
+    "mantissa": "unrestricted"
+  },
+  "input": {
+    "shape": [
+      3,
+      256,
+      256
+    ],
+    "color": "RGB",
+    "dtype": "float32",
+    "stretch_percentiles": [
+      2.0,
+      98.0
+    ],
+    "stretch_epsilon": 1e-06,
+    "constant_channel_threshold": 1e-06,
+    "imagenet_normalization": false
+  },
+  "training": {
+    "data": {
+      "batch_size": 32,
+      "eval_batch_size": 64,
+      "image_size": 256,
+      "input_channels": 3,
+      "stretch_percentiles": [
+        2,
+        98
+      ]
+    },
+    "loss": {},
+    "model": {
+      "base_gsd": 0.6666666667,
+      "input_channels": 3,
+      "mantissa_hidden": 64,
+      "mantissa_max": 1.5,
+      "mantissa_min": 0.75,
+      "num_classes": 4,
+      "root_mode": "backbone_feature",
+      "vector_dim": 16
+    },
+    "seed": 43,
+    "train": {
+      "epochs": 100,
+      "lr": 0.0001,
+      "lr_gamma": 0.1,
+      "milestones": [
+        50,
+        75
+      ],
+      "weight_decay": 4e-05
+    },
+    "effective_loss": {
+      "classification_weight": 1.0,
+      "direct_log_loss_weight": 0.0,
+      "mantissa_weight": 10.0,
+      "neighbor_error_fraction": 0.1,
+      "neighbor_mantissa_weight": 1.0
+    },
+    "effective_optimizer": {
+      "optimizer": "Adam",
+      "lr": 0.0001,
+      "weight_decay": 4e-05,
+      "scheduler": "MultiStepLR",
+      "milestones": [
+        50,
+        75
+      ],
+      "gamma": 0.1,
+      "epochs": 100
+    }
+  },
+  "best_epoch": 95
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "model_id": "nysdop_urep_a5_s42",
+  "dataset": "nysdop",
+  "method": "urep",
+  "seed": 42,
+  "unit": "ft/px",
+  "model": {
+    "output_min": 0.5,
+    "output_max": 6.0,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "learned",
+    "use_nll": false
+  },
+  "output": {
+    "activation": "sigmoid_range",
+    "min": 0.5,
+    "max": 6.0
+  },
+  "input": {
+    "shape": [
+      3,
+      256,
+      256
+    ],
+    "color": "RGB",
+    "dtype": "float32",
+    "stretch_percentiles": [
+      2.0,
+      98.0
+    ],
+    "stretch_epsilon": 1e-06,
+    "constant_channel_threshold": 1e-06,
+    "imagenet_normalization": false
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 100,
+    "train_count": 54000,
+    "dev_count": 9000,
+    "steps_per_epoch": 1688,
+    "batch_size": 32,
+    "eval_batch_size": 64,
+    "output_min": 0.5,
+    "output_max": 6.0,
+    "unit": "ft/px",
+    "lr": 0.001,
+    "min_lr": 1e-05,
+    "weight_decay": 8e-05,
+    "patch_size": 64,
+    "patch_count": 16,
+    "fusion": "learned",
+    "use_nll": false,
+    "nll_alpha": 0.05,
+    "variant": "baseline",
+    "root_mode": "backbone_feature",
+    "num_classes": 9,
+    "base_gsd": 0.013333333333333334,
+    "local_loss_alpha": 0.04768970142662903,
+    "local_loss_type": "log_mse",
+    "effective_loss": {
+      "image_loss": "SmoothL1(log(pred),log(target))",
+      "beta": 0.1,
+      "local_loss": "log_mse",
+      "local_coefficient": 0.04768970142662903
+    },
+    "effective_optimizer": {
+      "optimizer": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 8e-05,
+      "scheduler": "CosineAnnealingLR",
+      "T_max": 100,
+      "eta_min": 1e-05,
+      "epochs": 100
+    }
+  },
+  "best_epoch": 98
+}
